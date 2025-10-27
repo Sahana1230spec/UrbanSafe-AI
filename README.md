@@ -1,96 +1,174 @@
- # UrbanSafe-AI 🚨
-## Smart City Mobility & Accident Risk Prediction - Data Analysis Phase
-### 🎯 Project Overview
-Initial phase of a smart traffic safety prediction system analyzing UK road accident data. This project explores accident patterns and builds a baseline machine learning model to predict accident severity.
+# UrbanSafe-AI
+## Smart City Mobility & Accident Risk Prediction System
 
-### 📊 Current Results
-- **104,258 accident records** analyzed from UK Department of Transportation (2023)
-- **73.6% prediction accuracy** achieved with Random Forest model
-- **Rush hour risk identified**: Peak accidents at 17:00 (9,216 incidents)
-- **Key insight**: 78.7% of accidents occur in good weather conditions
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red.svg)](https://streamlit.io/)
 
-### 🛠️ Technology Stack
-- **Data Processing**: Python, Pandas, NumPy
-- **Machine Learning**: Scikit-learn, Random Forest
-- **Visualization**: Matplotlib
-- **Data Source**: UK Road Safety Data (2023)
+**Live Demo:** [UrbanSafe-AI Dashboard](https://your-streamlit-url-here)
 
-### 📈 Key Findings
-1. **Accident Severity Distribution**:
-   - Fatal: 1.5% (1,522 cases)
-   - Serious: 22.5% (23,438 cases) 
-   - Slight: 76.1% (79,298 cases)
+---
 
-2. **Risk Patterns**:
-   - Peak hour: 17:00 (rush hour)
-   - Most accidents: Single carriageways (72.6%)
-   - Weather impact: Minimal difference between fine/rainy conditions
+## Project Overview
 
-3. **ML Model Performance**:
-   - Overall accuracy: 73.6%
-   - Best at predicting slight injuries (95% recall)
-   - Time of day is most important feature (38.9% importance)
+UrbanSafe-AI analyzes over 104,000 UK road accident records to predict accident severity and identify high-risk scenarios using machine learning and interactive visualization.
 
-### 🔧 What's Implemented
-- [x] Data loading and exploration
-- [x] Statistical analysis and insights
-- [x] Data visualization (charts and graphs)
-- [x] Feature engineering 
-- [x] Random Forest classification model
-- [x] Model evaluation and feature importance analysis
+### Key Results
+- 104,258 accident records analyzed from UK Department of Transportation (2023)
+- 73.4% prediction accuracy using Random Forest classifier
+- Interactive web dashboard with real-time predictions
+- Geospatial analysis with accident hotspot mapping
 
-### 📁 Project Structure
+---
+
+## Technology Stack
+
+**Data Processing**: Python, Pandas, NumPy, Scikit-learn
+**Visualization**: Streamlit, Plotly, Folium, Matplotlib
+**Data Source**: UK Department for Transport - Road Safety Data (2023)
+
+---
+
+## Key Findings
+
+### Accident Statistics
+- Total Accidents: 104,258
+- Fatal: 1,522 (1.5%)
+- Serious: 23,438 (22.5%)
+- Slight: 79,298 (76.1%)
+
+### Risk Patterns
+- Peak accident hour: 17:00 with 9,216 incidents
+- Most accidents: Single carriageways (72.6%)
+- 78.7% of accidents occur in good weather
+- Minimal difference in fatal rates between weather conditions
+
+### Model Performance
+- Overall Accuracy: 73.4%
+- Top Feature: Hour of day (38.9% importance)
+- Best Performance: 95% recall for slight injury prediction
+
+---
+
+## Features
+
+### Data Analysis Pipeline (`check_data.py`)
+- Data loading and validation
+- Statistical analysis and insights
+- Feature engineering
+- Machine learning model training
+- Visualization generation
+
+### Interactive Dashboard (`dashboard.py`)
+- **Overview**: Key metrics and distribution charts
+- **Risk Predictor**: Real-time severity predictions based on input scenarios
+- **Hotspot Map**: Geospatial visualization with color-coded severity markers
+- **Analytics**: Monthly trends, weather impact, and pattern analysis
+
+---
+
+## Project Structure
+
 ```
 UrbanSafe-AI/
 ├── data/
-│   └── raw/                    # UK road safety datasets (3 files)
+│   └── raw/                    # UK road safety datasets
 ├── results/                    # Generated visualizations
-├── check_data.py              # Main analysis pipeline
-├── README.md                  # Project documentation
-└── requirements.txt           # Python dependencies
+├── check_data.py              # Analysis pipeline
+├── dashboard.py               # Streamlit web application
+├── requirements.txt           # Dependencies
+└── README.md                  # Documentation
 ```
 
-### ⚡ Quick Start
-1. **Clone and setup**
-   ```bash
-   git clone https://github.com/Sahana1230spec/UrbanSafe-AI.git
-   cd UrbanSafe-AI
-   pip install pandas numpy matplotlib scikit-learn
-   ```
+---
 
-2. **Add your data**
-   - Download UK Road Safety Data (2023) from gov.uk
-   - Place CSV files in `data/raw/` folder
+## Installation & Usage
 
-3. **Run analysis**
-   ```bash
-   python check_data.py
-   ```
+### Prerequisites
+- Python 3.8+
+- pip
 
-### 📊 Current Model Performance
-| Metric | Value |
-|--------|-------|
-| Accuracy | 73.6% |
-| Training Samples | 104,258 |
-| Features Used | 7 (time, weather, road type, etc.) |
-| Most Important Feature | Hour of day (38.9%) |
+### Setup
 
-### 🚀 Next Phase (Planned)
-- [ ] Apache Spark integration for big data processing
-- [ ] Geospatial analysis with coordinate mapping
-- [ ] Interactive Streamlit dashboard
-- [ ] Real-time prediction API
-- [ ] Advanced ML models (ensemble methods)
-- [ ] Spatiotemporal risk modeling
+```bash
+# Clone repository
+git clone https://github.com/Sahana1230spec/UrbanSafe-AI.git
+cd UrbanSafe-AI
 
-### 📚 Data Source
-UK Department for Transport - Road Safety Data (2023)
-- Collision records: 104,258 incidents
-- Casualty records: 132,977 people involved  
-- Vehicle records: 189,815 vehicles involved
+# Install dependencies
+pip install -r requirements.txt
+```
 
-### 🔒 Note
-This repository is currently private during development. Data files are not included in the repository due to size - download instructions provided above.
+### Download Data
+1. Visit [UK Road Safety Data](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data)
+2. Download: Collisions 2023, Casualties 2023, Vehicles 2023
+3. Place CSV files in `data/raw/` folder
+
+### Run Analysis
+```bash
+python check_data.py
+```
+
+### Launch Dashboard
+```bash
+streamlit run dashboard.py
+```
+
+Dashboard opens at `http://localhost:8501`
 
 ---
-*Building safer cities through data-driven insights* 🚗📊
+
+## Model Details
+
+**Algorithm**: Random Forest Classifier
+**Configuration**: 100 estimators, 80/20 train-test split
+**Accuracy**: 73.4%
+
+### Feature Importance
+| Feature | Importance |
+|---------|-----------|
+| Hour of Day | 38.9% |
+| Day of Week | 20.0% |
+| Weather Conditions | 10.3% |
+| Speed Limit | 8.6% |
+| Road Surface | 8.6% |
+| Road Type | 7.8% |
+| Light Conditions | 5.8% |
+
+---
+
+## Deployment
+
+### Streamlit Cloud
+1. Push code to GitHub
+2. Visit streamlit.io/cloud
+3. Connect repository
+4. Deploy
+
+---
+
+## Future Enhancements
+
+- Apache Spark integration for distributed processing
+- Real-time traffic data integration
+- Deep learning models for improved accuracy
+- REST API development
+- Multi-city analysis
+
+---
+
+## Author
+
+**Sahana**  
+GitHub: [@Sahana1230spec](https://github.com/Sahana1230spec)
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Data Source
+
+UK Department for Transport - Road Safety Data (2023)
